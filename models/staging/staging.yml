@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: One row per order from the thelook e-commerce store.
+    columns:
+      - name: order_id
+        tests: [unique, not_null]
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['Processing', 'Shipped', 'Complete', 'Cancelled', 'Returned']
+
+  - name: stg_order_items
+    description: One row per item in an order.
+    columns:
+      - name: order_item_id
+        tests: [unique, not_null]
+      - name: order_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_orders')
+              field: order_id
+
+  - name: stg_users
+    description: Customers, with direct identifiers (name, email, address) removed for GDPR data minimisation.
+    columns:
+      - name: user_id
+        tests: [unique, not_null]
+
+  - name: stg_products
+    description: Product catalogue with cost and retail price.
+    columns:
+      - name: product_id
+        tests: [unique, not_null]

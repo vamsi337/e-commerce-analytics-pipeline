@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: fct_daily_sales
+    description: Daily orders, items sold, revenue and gross profit, excluding cancelled and returned items.
+    columns:
+      - name: order_date
+        tests: [unique, not_null]
+      - name: revenue
+        tests: [not_null]
+
+  - name: dim_customers
+    description: One row per customer with order count and lifetime value.
+    columns:
+      - name: user_id
+        tests: [unique, not_null]
+      - name: lifetime_value
+        description: Total spend on items that were not cancelled or returned.
