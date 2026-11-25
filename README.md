@@ -4,7 +4,7 @@
 An end-to-end analytics pipeline on Google BigQuery, built with dbt and
 scheduled daily with GitHub Actions, feeding a Looker Studio dashboard.
 
-**Live dashboard:** [link]
+**Live dashboard:** https://datastudio.google.com/reporting/59d3335b-9502-4464-b600-53d02003f999
 
 ## Architecture
 BigQuery public dataset (thelook_ecommerce)
